@@ -1,0 +1,44 @@
+
+How to run go files?
+
+Go programs require a main package with a main function as the entry point for execution
+
+package main
+
+func main() {
+  // write your code to execute
+}
+
+go run main.go
+
+OR
+
+Using modules
+
+myproject/
+├── go.mod
+├── main.go
+└── mylib/
+    └── mylib.go
+
+# main.go
+package main
+import "myproject/mylib"
+
+func main() {
+    mylib.Hello()
+}
+
+# mylib.go
+package mylib
+import "fmt"
+
+func Hello() {
+    fmt.Println("Hello from mylib package!")
+}
+
+# go.mod
+module myproject
+go 1.18
+
+go run main.go
