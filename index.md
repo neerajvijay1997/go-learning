@@ -10,6 +10,9 @@ This pattern is useful when you want to send a notification or a value to anothe
 
 Non-Blocking Send: The key feature here is the use of the default case. It ensures that if no goroutine is currently ready to receive from n.completedObjectivesForRPC, the send operation will not block the execution of the current goroutine. Instead, it will immediately proceed to the default case, effectively discarding the value to be sent.
 
+<https://gobyexample.com/non-blocking-channel-operations>
+<https://stackoverflow.com/questions/48953236/how-to-implement-non-blocking-write-to-an-unbuffered-channel>
+
 Example code
 ```
 package main
