@@ -65,6 +65,16 @@ https://medium.com/goingogo/why-use-testmain-for-testing-in-go-dafb52b406bc
 
 
 
+
+
+variadic operator in Go
+https://dhawalpandya01.hashnode.dev/variadic-operator-in-golang
+
+numbers := []int{1, 2, 3, 4, 5} 
+participants = append(participants, numbers...)
+// Unpacking the slice and passing as variadic arguments
+
+
 variadic function in go
 https://www.geeksforgeeks.org/variadic-functions-in-go/
 https://gobyexample.com/variadic-functions
