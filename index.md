@@ -1,4 +1,57 @@
 
+### Non blocking send to channel
+```
+select {
+case n.completedObjectivesForRPC <- completed.Id():
+default:
+}
+```
+This pattern is useful when you want to send a notification or a value to another part of your program but don’t want to wait if the recipient is not ready to receive it. This can help avoid deadlocks and keep the program responsive.
+
+Non-Blocking Send: The key feature here is the use of the default case. It ensures that if no goroutine is currently ready to receive from n.completedObjectivesForRPC, the send operation will not block the execution of the current goroutine. Instead, it will immediately proceed to the default case, effectively discarding the value to be sent.
+
+Example code
+```
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	ch := make(chan int)
+	go func() {
+		for {
+			select {
+			case val := <-ch:
+				fmt.Println("Received:", val)
+			default:
+				// Do some work if there's nothing to receive
+				fmt.Println("No value received")
+				time.Sleep(500 * time.Millisecond)
+			}
+		}
+	}()
+
+	for i := 0; i < 5; i++ {
+		select {
+		case ch <- i:
+			fmt.Println("Sent:", i)
+		default:
+			fmt.Println("Channel is full, discarding:", i)
+		}
+		time.Sleep(300 * time.Millisecond)
+	}
+}
+
+```
+
+
+
+
+
+
 ### Understanding string()
 if got is byte of some struct then does string(got) convert it to string representation in go 
 
