@@ -1,4 +1,73 @@
 
+
+
+### try catch
+
+```
+func catchme() {
+    panic("oh no!")
+}
+
+func main() {
+    defer func() {
+        if err := recover(); err != nil {
+            log.Println("panic occurred:", err)
+        }
+    }()
+
+    catchme()
+}
+```
+
+Example handling error in go routine
+```
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func worker(id int, errChan chan<- error) {
+	defer func() {
+		if r := recover(); r != nil {
+			errChan <- fmt.Errorf("worker %d: %v", id, r)
+		}
+	}()
+	
+	// Simulate work that may panic
+	if id == 1 {
+		panic("something went wrong")
+	}
+	
+	// Simulate work
+	time.Sleep(time.Second)
+	fmt.Printf("Worker %d done\n", id)
+	errChan <- nil
+}
+
+func main() {
+	errChan := make(chan error, 2) // Buffered channel to prevent goroutine blocking
+
+	for i := 0; i < 2; i++ {
+		go worker(i, errChan)
+	}
+
+	for i := 0; i < 2; i++ {
+		if err := <-errChan; err != nil {
+			fmt.Printf("Error: %v\n", err)
+		}
+	}
+	
+	fmt.Println("Main thread continues running")
+}
+
+```
+
+
+
+
+
 ### Non blocking send to channel
 ```
 select {
