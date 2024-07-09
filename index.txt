@@ -82,3 +82,10 @@ https://gobyexample.com/variadic-functions
 func processNodes(clients ...Node) {
   Inside the function, clients is treated like a slice ([]Node).
 }
+
+
+
+
+
+how to use branch in go mod file
+https://www.danesparza.net/2022/12/use-branches-with-go-modules/
