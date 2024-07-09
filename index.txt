@@ -87,5 +87,6 @@ func processNodes(clients ...Node) {
 
 
 
-how to use branch in go mod file
+how to use replace and branch in go mod file? 
+- how to get proper semver version
 https://www.danesparza.net/2022/12/use-branches-with-go-modules/
