@@ -90,3 +90,13 @@ func processNodes(clients ...Node) {
 how to use replace and branch in go mod file? 
 - how to get proper semver version
 https://www.danesparza.net/2022/12/use-branches-with-go-modules/
+
+
+
+
+
+Install go packeges with specific version 
+go get github.com/ethereum-optimism/op-geth@v1.101311.0
+
+
+
