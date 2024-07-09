@@ -1,4 +1,61 @@
+### Abstract class in go
+In Go, there's no direct support for abstract classes as found in some other object-oriented languages like Java or C#. However, you can achieve similar behavior using interfaces and embedding. Here’s how you can create an abstract class-like structure in Go:
 
+Define an interface: This will act as the abstract class.
+Create a struct: This struct can include common methods and fields.
+Embed the struct in other structs: This allows other structs to inherit common behavior.
+```
+package main
+
+import "fmt"
+
+// Abstract interface
+type Animal interface {
+	Speak() string
+}
+
+// Base struct
+type BaseAnimal struct {
+	name string
+}
+
+// Common method
+func (b *BaseAnimal) GetName() string {
+	return b.name
+}
+
+// Concrete struct embedding the BaseAnimal
+type Dog struct {
+	BaseAnimal
+}
+
+// Implement the Speak method
+func (d Dog) Speak() string {
+	return "Woof!"
+}
+
+// Another concrete struct embedding the BaseAnimal
+type Cat struct {
+	BaseAnimal
+}
+
+// Implement the Speak method
+func (c Cat) Speak() string {
+	return "Meow!"
+}
+
+func main() {
+	dog := Dog{BaseAnimal{name: "Buddy"}}
+	cat := Cat{BaseAnimal{name: "Whiskers"}}
+
+	animals := []Animal{dog, cat}
+
+	for _, animal := range animals {
+		fmt.Printf("%s says %s\n", animal.(*BaseAnimal).GetName(), animal.Speak())
+	}
+}
+
+```
 
 
 ### try catch
