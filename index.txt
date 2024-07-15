@@ -100,3 +100,9 @@ go get github.com/ethereum-optimism/op-geth@v1.101311.0
 
 
 
+
+install go 
+https://go.dev/dl/
+https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-20-04
+https://go.dev/doc/install
+
