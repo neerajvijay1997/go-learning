@@ -6,6 +6,17 @@ https://gobyexample.com/
 
 
 
+All struct fields are mandatory
+when you create an instance of a struct in Go, you must provide values for all the fields. If you omit any field, the compiler will raise an error because it expects all fields to be initialized.
+
+to make it optional
+
+Use Zero Values: Assign default values to fields that are not provided. For example, an integer field will have a default value of 0, and a string field will have a default value of an empty string "".
+
+Use Pointers: Use pointers for fields that you want to be optional. This way, you can check if a field is nil to determine if it was set.
+
+
+
 
 How to run go files?
 
