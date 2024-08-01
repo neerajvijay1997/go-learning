@@ -6,7 +6,14 @@ https://gobyexample.com/
 
 
 
-All struct fields are mandatory
+
+compoistion vs inheritance
+https://www.geeksforgeeks.org/composition-in-golang/
+https://www.codecademy.com/resources/docs/go/composition
+
+
+
+All struct fields are mandatory----not true
 when you create an instance of a struct in Go, you must provide values for all the fields. If you omit any field, the compiler will raise an error because it expects all fields to be initialized.
 
 to make it optional
