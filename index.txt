@@ -6,6 +6,9 @@ https://gobyexample.com/
 
 
 
+generics in go
+
+
 
 compoistion vs inheritance
 https://www.geeksforgeeks.org/composition-in-golang/
