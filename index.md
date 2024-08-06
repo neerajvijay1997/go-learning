@@ -1,3 +1,33 @@
+### Range for channel
+
+```
+If your using buffer channel in go and if we are looping through the channel using range 
+		for completedObjectiveId := range completedObjectiveChannel 
+will it also, shows the previous value that has been passed through the channel
+```
+In Go, when you range over a buffered channel, you will receive each value that has been sent to the channel in the order they were sent. Once a value is received from the channel, it is removed from the channel and will not be received again. So, you won't see the same value multiple times unless it was sent multiple times.
+
+SO ONCE IT RECIEVED THEN ONLY IT WOULD BE REMOVED FROM BUFFER CHANNEL
+```
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    completedObjectiveChannel := make(chan int, 3)
+    completedObjectiveChannel <- 1
+    completedObjectiveChannel <- 2
+    completedObjectiveChannel <- 3
+    close(completedObjectiveChannel)
+
+    for completedObjectiveId := range completedObjectiveChannel {
+        fmt.Println(completedObjectiveId)
+    }
+}
+```
+
 ### Abstract class in go
 In Go, there's no direct support for abstract classes as found in some other object-oriented languages like Java or C#. However, you can achieve similar behavior using interfaces and embedding. Here’s how you can create an abstract class-like structure in Go:
 
