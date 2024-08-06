@@ -6,8 +6,8 @@ https://gobyexample.com/
 
 
 
-generics in go
-
+generic implementation in go
+https://go.dev/tour/generics/1
 
 
 compoistion vs inheritance
