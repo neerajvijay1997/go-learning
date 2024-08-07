@@ -1,3 +1,34 @@
+### GEnerics with type constraint example
+```
+type CounterChallengeRequest[T CounterChallengePayload] struct {
+	ChannelId Destination
+	Action    CounterChallengeAction
+	Payload   T
+}
+
+type CounterChallengePayload interface {
+	state.SignedState |
+	state.State
+}
+```
+There is no direct union type in go but will be able to create using interface
+
+ In your example, you have a generic CounterChallengeRequest struct with a type parameter T that is constrained by the CounterChallengePayload interface. This allows T to be either state.SignedState or state.State, but it doesn't create a true union type.
+
+To handle different payload types at runtime, you can use type assertions or type switches:
+```
+func processRequest[T CounterChallengePayload](request CounterChallengeRequest[T]) {
+    switch payload := request.Payload.(type) {
+    case State:
+        // Handle State
+    case SignedState:
+        // Handle SignedState
+    default:
+        // Handle unknown type
+    }
+}
+```
+
 ### Range for channel
 
 ```
